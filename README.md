@@ -275,42 +275,49 @@ Responda las siguientes preguntas directamente en este archivo `README.md`.
 ### 1. ¿Cuál es la diferencia entre `main` y `develop` en Git-flow?
 
 Respuesta:
+Sistema en Node.js que permite calcular el precio final de un producto aplicando descuentos según el tipo de cliente 
 
 ---
 
 ### 2. ¿Por qué la funcionalidad se desarrolló en una rama `feature` y no directamente en `main`?
 
 Respuesta:
+Porque permite isolar el desarrollo de la nueva funcionalidad. Trabajar en una rama feature evita romper o inestabilizar el código de producción o desarrollo principal, facilita el trabajo en paralelo de múltiples desarrolladores sin interferencias, y permite realizar revisiones de código de forma limpia antes de integrar los cambios.
 
 ---
 
 ### 3. ¿Qué hace el comando `git merge --no-ff`?
 
 Respuesta:
+Fuerza a Git a crear un commit de fusión (merge commit) explícito al unir las ramas, incluso si el merge se podría haber hecho de forma directa (fast-forward). Esto permite conservar en el historial la evidencia visual de que existió una rama de trabajo independiente y cuándo se integró al flujo principal.
 
 ---
 
 ### 4. ¿Qué diferencia habría si Git hiciera un merge con fast-forward?
 
 Respuesta:
+Si se hiciera con fast-forward, Git simplemente movería el puntero de la rama principal hacia adelante hasta alcanzar el último commit de la rama feature. El resultado sería un historial totalmente lineal, pero se perdería el registro visual de que los commits pertenecían a una rama de características específica, dificultando identificar qué conjunto de cambios formó parte de esa tarea.
 
 ---
 
 ### 5. Después del merge, ¿los commits hechos en `feature/descuento-estudiante` quedan en el historial de `develop`?
 
 Respuesta:
+Sí. Todos los commits individuales que se hicieron en la rama feature pasan a formar parte del historial de develop. Si además se utilizó --no-ff, se añadirá un commit adicional de tipo merge que conectará formalmente ambas historias.
 
 ---
 
 ### 6. ¿Qué rol cumple una rama `release`?
 
 Respuesta:
+Su rol es preparar una nueva versión para producción. Permite realizar las últimas pruebas de control de calidad, ajustes de metadatos o corrección menor de errores de última hora aislados, mientras el equipo continúa avanzando con el desarrollo de la siguiente versión en la rama develop. Una vez lista, se fusiona tanto en main como en develop.
 
 ---
 
 ### 7. ¿Es posible usar Integración Continua con Git-flow? Justifica brevemente.
 
 Respuesta:
+ Es totalmente compatible, de hecho, es una práctica estándar. Se pueden configurar herramientas de CI/CD para que disparen pruebas automáticas en momentos clave del flujo. Al abrir un Pull Request desde una rama feature, al hacer push en develop, o al preparar una rama release, garantizando la calidad del software en cada etapa de integración.
 
 ---
 
